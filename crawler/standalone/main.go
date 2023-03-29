@@ -11,13 +11,6 @@ import (
 // 3.页面获取 fetch
 // 4.解析器 Parse**
 func main() {
-	//engines.Run([]engines.Request{
-	//	{
-	//		Url:        "https://www.zhenai.com/zhenghun",
-	//		ParserFunc: parser.ParseCityList,
-	//	},
-	//})
-
 	engines.Run([]engines.Request{
 		{
 			Url:        parser.BaseUrl,

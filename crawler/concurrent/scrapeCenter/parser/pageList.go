@@ -1,7 +1,7 @@
 package parser
 
 import (
-	"golang_study/crawler/standalone/engines"
+	"golang_study/crawler/concurrent/engines"
 	"log"
 	"regexp"
 	"strconv"

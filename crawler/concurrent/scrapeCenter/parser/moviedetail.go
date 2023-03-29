@@ -1,8 +1,8 @@
 package parser
 
 import (
-	"golang_study/crawler/standalone/engines"
-	"golang_study/crawler/standalone/model"
+	"golang_study/crawler/concurrent/engines"
+	"golang_study/crawler/concurrent/model"
 	"log"
 	"regexp"
 	"strconv"
@@ -28,7 +28,7 @@ func ParseMovieDetail(htmlByte []byte) engines.ParserResult {
 
 	name := string(nameMatch[1])
 
-	tag := make([]string, len(tagMatch))
+	var tag []string
 	for _, m := range tagMatch {
 		tag = append(tag, string(m[1]))
 	}
@@ -45,7 +45,7 @@ func ParseMovieDetail(htmlByte []byte) engines.ParserResult {
 		return engines.ParserResult{}
 	}
 
-	cast := make([]model.Cast, len(castMatch))
+	var cast []model.Cast
 	for _, m := range castMatch {
 		cast = append(cast, model.Cast{
 			ActorName: string(m[2]),
