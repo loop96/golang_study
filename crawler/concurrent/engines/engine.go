@@ -8,6 +8,7 @@ import (
 type ConcurrentEngine struct {
 	Scheduler Scheduler
 	WorkCount int
+	ItemSaver chan interface{}
 }
 
 type Scheduler interface {
@@ -43,7 +44,7 @@ func (e ConcurrentEngine) Run(seed ...Request) {
 		//get data
 		result := <-out
 		for _, item := range result.Items {
-			log.Printf("Got item %v", item)
+			go func(item interface{}) { e.ItemSaver <- item }(item)
 		}
 		//put in request,here dependence result from out channel,so it could be stuck if not use goroutine
 		for _, request := range result.Requests {

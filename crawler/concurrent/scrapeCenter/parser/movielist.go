@@ -15,8 +15,8 @@ func ParseMovieList(htmlByte []byte) engines.ParserResult {
 	result := engines.ParserResult{}
 	for _, m := range match {
 		url := string(m[1])
-		name := string(m[2])
-		result.Items = append(result.Items, name)
+		//name := string(m[2])
+		//result.Items = append(result.Items, name)
 		result.Requests = append(result.Requests, engines.Request{
 			Url:        BaseUrl + url,
 			ParserFunc: ParseMovieDetail,

@@ -2,6 +2,7 @@ package main
 
 import (
 	"golang_study/crawler/concurrent/engines"
+	"golang_study/crawler/concurrent/persist"
 	"golang_study/crawler/concurrent/scheduler"
 	"golang_study/crawler/concurrent/scrapeCenter/parser"
 )
@@ -14,6 +15,7 @@ func main() {
 	e := engines.ConcurrentEngine{
 		Scheduler: &scheduler.QueueScheduler{},
 		WorkCount: 100,
+		ItemSaver: persist.GetItemSaver(),
 	}
 	e.Run(engines.Request{
 		Url:        parser.BaseUrl,

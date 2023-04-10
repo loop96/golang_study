@@ -27,7 +27,7 @@ func ParsePageList(htmlByte []byte) engines.ParserResult {
 	//构造待爬的每页数据
 	for _, m := range match {
 		pageParam := string(m[1])
-		result.Items = append(result.Items, pageParam)
+		//result.Items = append(result.Items, pageParam)
 		result.Requests = append(result.Requests, engines.Request{
 			Url:        BaseUrl + pageParam,
 			ParserFunc: ParseMovieList,
